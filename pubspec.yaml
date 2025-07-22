@@ -33,6 +33,10 @@ dependencies:
   firebase_core: ^3.8.1 # For firebase initialization
   firebase_auth: ^5.3.4 #For user authentication
   cloud_firestore: ^5.0.0 # For database to store cars and bookings
+  url_launcher: ^6.3.2
+  provider: ^6.0.5 
+  image_picker: ^1.1.2
+  firebase_storage: ^12.4.9
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -59,6 +63,9 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/images/ 
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:

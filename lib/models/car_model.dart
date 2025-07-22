@@ -35,7 +35,7 @@ class Car{
       id:id,
       make: data['make']?? 'Unknown',
       model: data['model']?? 'Unknown',
-      year: data['year']?? '2000',
+      year: data['year']?? 2000,
       pricePerDay: (data['pricePerDay'] as num?)?.toDouble()?? 0.0,
       imageUrl: data['imageUrl']?? 'https://placehold.co/600x400/001F3F/FFFFFF?text=No+Image', // Placeholder image
       fuelType: data['fuelType'] ?? 'Petrol',

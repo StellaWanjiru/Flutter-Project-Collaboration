@@ -1,82 +1,96 @@
-// Users list their cars in a form that is stored in the firebase Cars collection
-
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:vroom_app/models/car_model.dart';
-import 'package:vroom_app/screens/add_car_page.dart';
+// import 'package:firebase_storage/firebase_storage.dart'; // REMOVE THIS IMPORT
+// import 'package:image_picker/image_picker.dart'; // REMOVE THIS IMPORT
+// import 'dart:io'; // REMOVE THIS IMPORT
+import 'package:vroom_app/models/car_model.dart'; // Corrected import path
 
+class AddCarPage extends StatefulWidget {
+  const AddCarPage({Key? key}) : super(key: key);
 
-class AddCarPage  extends StatefulWidget{
-  const AddCarPage({Key? key}):super(key:key);
   @override
-  _AddCarPageState createState()=> _AddCarPageState();
+  _AddCarPageState createState() => _AddCarPageState();
 }
-class _AddCarPageState extends State <AddCarPage>{
-  final _formKey = GlobalKey<FormState>(); // Key form validation
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance; // Firestore instance
- 
- // Text editing controllers for form fields
 
- final TextEditingController _makeController = TextEditingController();
- final TextEditingController _modelController = TextEditingController();
- final TextEditingController _yearController = TextEditingController();
- final TextEditingController _priceController = TextEditingController();
- final TextEditingController _imageUrlController = TextEditingController();
- final TextEditingController _fuelTypeController = TextEditingController();
- final TextEditingController _seatsController = TextEditingController();
- final TextEditingController _listerNameController = TextEditingController();
- final TextEditingController _listerPhoneController = TextEditingController();
- final TextEditingController _listerEmailController = TextEditingController();
+class _AddCarPageState extends State<AddCarPage> {
+  final _formKey = GlobalKey<FormState>();
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  // final FirebaseStorage _storage = FirebaseStorage.instance; // REMOVED: Firebase Storage instance
 
-// Dispose controller to prevent memory leaks
-@override
-void dispose(){
-  _makeController.dispose();
-  _modelController.dispose();
-  _yearController.dispose();
-  _priceController.dispose();
-  _imageUrlController.dispose();
-  _fuelTypeController.dispose();
-  _seatsController.dispose();
-  _listerNameController.dispose();
-  _listerPhoneController.dispose();
-  _listerEmailController.dispose();
-  super.dispose();
-}
-// Function to ass a new car to Firestore
-Future<void> _addCarToFirestore() async{
-  if (_formKey.currentState!.validate()){
-    //Create a Car object from form inputs
-    final newCar =Car(
-      id:'',
-      make: _makeController.text.trim(),
-      model: _modelController.text.trim(),
-      year: int.parse(_yearController.text.trim()),
-      pricePerDay:double.parse(_priceController.text.trim()),
-      imageUrl: _imageUrlController.text.trim(),
-      fuelType: _fuelTypeController.text.trim(),
-      seats: int.parse(_seatsController.text.trim()),
-      isAvailable: true, // New listings are typically available by default
-      listerName: _listerNameController.text.trim(),
-      listerPhone: _listerPhoneController.text.trim(),
-      listerEmail: _listerEmailController.text.trim(),
-    );
-    try{
-      // Add a new car to the cars collection
-      await _firestore.collection('cars').add(newCar.toFirestore());
-      ScaffoldMessenger.of(context).showSnackBar(
-       const SnackBar(content: Text('Car added successfully!'), backgroundColor: Colors.green),
+  // Text editing controllers for form fields
+  final TextEditingController _makeController = TextEditingController();
+  final TextEditingController _modelController = TextEditingController();
+  final TextEditingController _yearController = TextEditingController();
+  final TextEditingController _priceController = TextEditingController();
+  final TextEditingController _imageUrlController = TextEditingController(); // Re-added for manual URL input
+  final TextEditingController _fuelTypeController = TextEditingController();
+  final TextEditingController _seatsController = TextEditingController();
+  final TextEditingController _listerNameController = TextEditingController();
+  final TextEditingController _listerPhoneController = TextEditingController();
+  final TextEditingController _listerEmailController = TextEditingController();
+
+  // File? _selectedImage; // REMOVED: To store the selected image file
+  // bool _isUploading = false; // REMOVED: To show loading state during upload
+
+  // Dispose controllers to prevent memory leaks
+  @override
+  void dispose() {
+    _makeController.dispose();
+    _modelController.dispose();
+    _yearController.dispose();
+    _priceController.dispose();
+    _imageUrlController.dispose(); // Dispose the re-added controller
+    _fuelTypeController.dispose();
+    _seatsController.dispose();
+    _listerNameController.dispose();
+    _listerPhoneController.dispose();
+    _listerEmailController.dispose();
+    super.dispose();
+  }
+
+  // REMOVED: Function to pick an image from the gallery
+  // Future<void> _pickImage() async { ... }
+
+  // REMOVED: Function to upload image to Firebase Storage
+  // Future<String?> _uploadImage() async { ... }
+
+  // Function to add a new car to Firestore
+  Future<void> _addCarToFirestore() async {
+    if (_formKey.currentState!.validate()) {
+      // No image upload logic needed here anymore
+
+      // Create a Car object from form inputs
+      final newCar = Car(
+        id: '', // Firestore will generate the ID
+        make: _makeController.text.trim(),
+        model: _modelController.text.trim(),
+        year: int.parse(_yearController.text.trim()),
+        pricePerDay: double.parse(_priceController.text.trim()),
+        imageUrl: _imageUrlController.text.trim(), // Use the URL from the text field
+        fuelType: _fuelTypeController.text.trim(),
+        seats: int.parse(_seatsController.text.trim()),
+        isAvailable: true, // New listings are typically available by default
+        listerName: _listerNameController.text.trim(),
+        listerPhone: _listerPhoneController.text.trim(),
+        listerEmail: _listerEmailController.text.trim(),
+      );
+
+      try {
+        // Add the new car to the 'cars' collection
+        await _firestore.collection('cars').add(newCar.toFirestore());
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Car added successfully!'), backgroundColor: Colors.green),
         );
-       Navigator.pop(context); // Go back to the previous screen (HomePage)
-    }catch(e){
-       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to add Car: $e'), backgroundColor: Colors.red),
+        Navigator.pop(context); // Go back to the previous screen (HomePage)
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to add car: $e'), backgroundColor: Colors.red),
         );
+      }
     }
   }
-}
 
- @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue.shade900,
@@ -95,7 +109,11 @@ Future<void> _addCarToFirestore() async{
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Helper for building text input fields
+              // REMOVED: Image Picker Section
+              // GestureDetector( ... )
+              // const SizedBox(height: 24),
+
+              // Car Details Fields
               _buildTextInputField(_makeController, 'Make', 'e.g., Toyota', validator: (value) {
                 if (value == null || value.isEmpty) return 'Please enter car make';
                 return null;
@@ -112,15 +130,15 @@ Future<void> _addCarToFirestore() async{
                 return null;
               }),
               const SizedBox(height: 16),
-              _buildTextInputField(_priceController, 'Price Per Day (\$)', 'e.g., 75.00', keyboardType: TextInputType.number, validator: (value) {
+              _buildTextInputField(_priceController, 'Price Per Day (KSh)', 'e.g., 7500.00', keyboardType: TextInputType.number, validator: (value) {
                 if (value == null || value.isEmpty) return 'Please enter price';
                 if (double.tryParse(value) == null) return 'Please enter a valid number';
                 return null;
               }),
+              // Image URL field is back
               const SizedBox(height: 16),
-              _buildTextInputField(_imageUrlController, 'Image URL', 'e.g., https://example.com/car.jpg', keyboardType: TextInputType.url, validator: (value) {
-                if (value == null || value.isEmpty) return 'Please enter image URL';
-                if (!Uri.tryParse(value)!.hasAbsolutePath) return 'Please enter a valid URL';
+              _buildTextInputField(_imageUrlController, 'Image URL (e.g., assets/images/car1.jpg)', 'e.g., assets/images/car1.jpg', validator: (value) {
+                if (value == null || value.isEmpty) return 'Please enter image URL or asset path';
                 return null;
               }),
               const SizedBox(height: 16),
@@ -135,6 +153,8 @@ Future<void> _addCarToFirestore() async{
                 return null;
               }),
               const SizedBox(height: 24),
+
+              // Lister Information Section
               const Text(
                 'Lister Information',
                 style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
@@ -145,7 +165,7 @@ Future<void> _addCarToFirestore() async{
                 return null;
               }),
               const SizedBox(height: 16),
-              _buildTextInputField(_listerPhoneController, 'Lister Phone', 'e.g., +1234567890', keyboardType: TextInputType.text, validator: (value) {
+              _buildTextInputField(_listerPhoneController, 'Lister Phone', 'e.g., +2547XXXXXXXX', keyboardType: TextInputType.phone, validator: (value) {
                 if (value == null || value.isEmpty) return 'Please enter lister phone';
                 return null;
               }),
@@ -220,6 +240,3 @@ Future<void> _addCarToFirestore() async{
     );
   }
 }
- 
-    
-

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "145988561319",
+    "project_id": "vroom-car-hire-app",
+    "storage_bucket": "vroom-car-hire-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:145988561319:android:405a04a1431c3c1fed2e82",
+        "android_client_info": {
+          "package_name": "com.example.vroom_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMdJP_pBClQ4D7FO94Baa-57kF9ixVGyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
