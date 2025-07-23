@@ -39,7 +39,7 @@ class CarHireApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         textTheme: const TextTheme(
           displayLarge: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-          titleLarge: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+          titleLarge: TextStyle(fontSize: 24.0),
           bodyMedium: TextStyle(fontSize: 14.0),
         ),
       ),

@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
         errorBuilder: (context, error, stackTrace) {
           return Container(
             height: 180,
-            color: Colors.blue.shade700,
+            color: const Color(0xFF1E3A8A),
             child: const Center(
               child: Icon(Icons.broken_image, size: 50, color: Colors.white70),
             ),
@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
         errorBuilder: (context, error, stackTrace) {
           return Container(
             height: 180,
-            color: Colors.blue.shade700,
+            color: const Color(0xFF1E3A8A),
             child: const Center(
               child: Icon(Icons.broken_image, size: 50, color: Colors.white70),
             ),
@@ -80,11 +80,11 @@ class _HomePageState extends State<HomePage> {
     final String userId = currentUser?.uid ?? 'Not Logged In';
 
     return Scaffold(
-      backgroundColor: Colors.blue.shade900,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.blue.shade700,
+        backgroundColor: const Color(0xFF1E3A8A),
         title: const Text(
-          'Available Cars',
+          'Cars',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         actions: [
@@ -209,9 +209,9 @@ class _HomePageState extends State<HomePage> {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          'KSh ${car.pricePerDay.toStringAsFixed(2)} / Day',
+                          'KSh ${car.pricePerDay.toStringAsFixed(0)} / Day',
                           style: TextStyle(
-                            color: Colors.orangeAccent,
+                            color:const Color(0xFFFF6B35),
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -257,18 +257,18 @@ class _HomePageState extends State<HomePage> {
           );
         },
       ),
-      // Re-added Floating Action Button to add mock cars
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          // Call the mock car addition function from MockDataService
-          await MockDataService().addMockCars();
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Mock cars added successfully!')),
-          );
-        },
-        backgroundColor: Colors.orangeAccent,
-        child: const Icon(Icons.add, color: Colors.white),
-      ),
+      // Removed Floating Action Button to add mock cars
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () async {
+      //     // Call the mock car addition function from MockDataService
+      //     await MockDataService().addMockCars();
+      //     ScaffoldMessenger.of(context).showSnackBar(
+      //       const SnackBar(content: Text('Mock cars added successfully!')),
+      //     );
+      //   },
+      //   backgroundColor:const Color(0xFFFF6B35),
+      //   child: const Icon(Icons.add, color: Colors.white),
+      // ),
     );
   }
 }

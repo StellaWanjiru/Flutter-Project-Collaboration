@@ -47,9 +47,9 @@ class CarDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue.shade900,
+      backgroundColor:  Colors.blue.shade700,
       appBar: AppBar(
-        backgroundColor: Colors.blue.shade700,
+        backgroundColor: const Color(0xFF1E3A8A),
         title: Text(
           '${car.make} ${car.model} Details',
           style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
@@ -85,9 +85,9 @@ class CarDetailsPage extends StatelessWidget {
             const SizedBox(height: 15),
 
             Text(
-              'Price: KSh ${car.pricePerDay.toStringAsFixed(2)} / Day',
+              'Price: KSh ${car.pricePerDay.toStringAsFixed(0)} / Day',
               style: const TextStyle(
-                color: Colors.orangeAccent,
+                color: const Color(0xFFFF6B35),
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
@@ -116,7 +116,7 @@ class CarDetailsPage extends StatelessWidget {
                   );
                 } : null,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: car.isAvailable ? Colors.orangeAccent : Colors.grey,
+                  backgroundColor: car.isAvailable ?  const Color(0xFFFF6B35) : Colors.grey,
                   padding: const EdgeInsets.symmetric(vertical: 18),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),

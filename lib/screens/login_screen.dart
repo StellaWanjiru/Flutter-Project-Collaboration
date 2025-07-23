@@ -77,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1E3A8A), // Your preferred background color
+      backgroundColor: const Color(0xFF1E3A8A), //  background color
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24.0),
@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                 width: 100,
                 height: 100,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFFF6B35), // Your preferred accent color
+                  color: const Color(0xFFFF6B35), //  accent color for better UX
                   borderRadius: BorderRadius.circular(25),
                 ),
                 child: const Icon(
@@ -111,6 +111,15 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 8),
 
+              const Text(
+                'Let us get you moving',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 8),
               const Text(
                 'Sign in to continue',
                 style: TextStyle(
