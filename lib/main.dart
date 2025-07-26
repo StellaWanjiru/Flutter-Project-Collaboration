@@ -6,7 +6,7 @@ import 'package:vroom_app/screens/login_screen.dart';
 import 'package:vroom_app/screens/register_screen.dart';
 import 'package:vroom_app/screens/home_page.dart';
 import 'package:vroom_app/services/auth_service.dart';
-import 'package:vroom_app/services/mock_data_service.dart'; // Import MockDataService
+// Import MockDataService
 
 void main() async {
   // Ensure Flutter widgets are initialized before Firebase

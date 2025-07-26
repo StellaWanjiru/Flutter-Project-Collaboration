@@ -6,7 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vroom_app/models/car_model.dart'; // Corrected import path
 
 class AddCarPage extends StatefulWidget {
-  const AddCarPage({Key? key}) : super(key: key);
+  const AddCarPage({super.key});
 
   @override
   _AddCarPageState createState() => _AddCarPageState();

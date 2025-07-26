@@ -27,7 +27,7 @@ class AuthService extends ChangeNotifier {
       return userCredential;
     } on FirebaseAuthException catch (e) {
       // Re-throw the FirebaseAuthException to be caught by the UI
-      throw e;
+      rethrow;
     } catch (e) {
       // Re-throw other exceptions
       throw Exception('An unknown error occurred during sign-in: $e');
@@ -83,7 +83,7 @@ class AuthService extends ChangeNotifier {
       notifyListeners(); // Notify listeners
       return userCredential;
     } on FirebaseAuthException catch (e) {
-      throw e;
+      rethrow;
     } catch (e) {
       throw Exception('An unknown error occurred during registration: $e');
     }

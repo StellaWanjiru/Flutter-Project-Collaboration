@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:vroom_app/services/auth_service.dart'; // Corrected import path
 import 'package:vroom_app/models/user_model.dart'; // Corrected import path
 import 'package:vroom_app/screens/home_page.dart'; // For navigation after registration
-import 'package:vroom_app/screens/login_screen.dart'; // For navigation to login
+// For navigation to login
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});

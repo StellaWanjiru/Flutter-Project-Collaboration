@@ -4,7 +4,7 @@ import 'package:url_launcher/url_launcher.dart'; // for launching phone dialer a
 
 class ListerContactPage extends StatelessWidget{
    final Car car; // The car object cntaining lister details
-   const ListerContactPage({Key? key, required this.car}) : super(key:key);
+   const ListerContactPage({super.key, required this.car});
 
    //Function to launch phone dialer
 
@@ -99,7 +99,7 @@ class ListerContactPage extends StatelessWidget{
             //Car lister information section
              const Text(
              'Contact Information',
-             style: const TextStyle(
+             style: TextStyle(
               color: Colors.white,
               fontSize:22,
               fontWeight:FontWeight.bold,

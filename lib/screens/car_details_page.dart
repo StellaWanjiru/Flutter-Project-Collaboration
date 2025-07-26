@@ -5,7 +5,7 @@ import 'package:vroom_app/screens/lister_contact_page.dart';
 class CarDetailsPage extends StatelessWidget {
   final Car car;
 
-  const CarDetailsPage({Key? key, required this.car}) : super(key: key);
+  const CarDetailsPage({super.key, required this.car});
 
   // Helper function to determine and build the correct image widget
   Widget _buildCarImage(String imageUrl) {
@@ -87,7 +87,7 @@ class CarDetailsPage extends StatelessWidget {
             Text(
               'Price: KSh ${car.pricePerDay.toStringAsFixed(0)} / Day',
               style: const TextStyle(
-                color: const Color(0xFFFF6B35),
+                color: Color(0xFFFF6B35),
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
