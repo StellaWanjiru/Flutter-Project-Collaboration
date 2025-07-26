@@ -1,7 +1,9 @@
 **Vroom: Car Hire Application
+
 **Vroom is a modern Flutter application designed to connect users looking to hire cars with car owners (listers). It provides a seamless experience for browsing available vehicles, viewing detailed car information, and directly contacting car listers. Car owners can also easily list their vehicles through a dedicated form.
 
 **Features**
+
 User Authentication: Secure user registration and login using Firebase Authentication.
 
 Dynamic Car Listings: Browse a real-time list of available cars with essential details.
@@ -34,6 +36,7 @@ image_picker: Flutter plugin for picking images from the device gallery.
 url_launcher: Flutter plugin for launching URLs (phone dialer, email client).
 
 **Usage**
+
 Login/Register:
 
 The app will start on the Login page. You can register a new account or log in with existing credentials.
@@ -69,6 +72,7 @@ Tap the "Tap to select car image" area to upload an image from your device.
 Click "Add Car" to save the listing to Firestore.
 
 **Future Enhancements
+
 **User Profiles: Allow users to view and edit their profiles.
 
 Booking System: Re-implement a full booking system with date selection, payment integration, and booking history.
