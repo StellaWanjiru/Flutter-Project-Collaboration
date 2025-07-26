@@ -86,3 +86,24 @@ Admin Panel: A dedicated section for administrators to manage users, cars, and b
 Push Notifications: Notify users about booking confirmations, new messages, etc.
 
 Map Integration: Show car locations on a map.
+
+### Deploying to Firebase Hosting (Web)
+
+Firebase Hosting is another robust and free option for Flutter web apps, especially useful if your app uses other Firebase services.
+
+... (existing deployment steps) ...
+
+5.  **Deploy to Firebase Hosting:**
+    ```bash
+    firebase deploy --only hosting
+    ```
+    The CLI will provide the Hosting URL (e.g., `https://vroom-1dcf4.web.app`) once the deployment is complete.
+
+    **Hosting Details:**
+    This application is deployed on Firebase Hosting. You can view the live application at:
+    **Live URL:** [https://vroom-1dcf4.web.app](https://vroom-1dcf4.web.app)
+
+    To manage this project within Firebase (check deployments, usage, etc.), access the **Firebase Console** here:
+    **Firebase Console:** [https://console.firebase.google.com/project/vroom-1dcf4/overview](https://console.firebase.com/project/vroom-1dcf4/overview)
+
+---
