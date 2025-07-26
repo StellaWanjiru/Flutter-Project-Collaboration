@@ -44,3 +44,15 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 .vercel
+# Firebase local cache
+.firebase/
+
+# Flutter SDK if cloned into the project root (should NOT be committed)
+flutter/
+
+# Also ensure these are present for Flutter build artifacts
+build/
+.dart_tool/
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
